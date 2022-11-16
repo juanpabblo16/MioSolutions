@@ -1,6 +1,6 @@
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Vertex implements Comparable {
+public class  Vertex implements Comparable {
 	
 	Vertex(String n){
 		name = n;
