@@ -9,7 +9,6 @@ public interface Tester {
   //   Scanner input: is a Scanner object that is a stream of text
   //                  containing the input to your program.
   //
-  // Returns: an ArrayList of Strings.  Each string is a line of output 
-  //          from your program.
+  // Returns: an ArrayList of Strings.  Each string is a line of output
   public ArrayList<String> compute( Scanner log );
 }
