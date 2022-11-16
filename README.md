@@ -4,4 +4,4 @@ Usted debe desarrollar (analizar, diseñar e implementar) un programa capaz de r
 
 ## Integrantes
 * Juan Pablo Acevedo
-* Carlos
+* Carlos tafurt
