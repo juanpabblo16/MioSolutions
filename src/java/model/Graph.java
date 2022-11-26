@@ -38,8 +38,6 @@ public class Graph<K>{
                     if((((Edge<?>) vertex.getEdges().get(i)).getWeight()) < (dis[(int)vertex.getKey()][(int) ( (Edge<Integer>)vertex.getEdges().get(i)).getEnd().getKey()])){
                         dis[(int)vertex.getKey()][(int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()] = (((Edge<?>) vertex.getEdges().get(i)).getWeight());
                     }
-                    //System.out.println((int)vertex.getKey()-1 + " , "+ ((int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()-1));
-                    //System.out.println(dis[(int)vertex.getKey()-1][(int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()-1]);
                 }
             }
         }
@@ -170,60 +168,7 @@ public class Graph<K>{
     }
     
     
-	public int dijkstra(T initialNode,T destinyNode) {
-		AdjacencyVertex<T> from=searchAdjVertex(initialNode);
-		AdjacencyVertex<T> destiny=searchAdjVertex(destinyNode);
-		int distance[] = new int[numVertex]; 
-	    Set<Integer> visited = new HashSet<Integer>();;
-		pq = new PriorityQueue<AdjacencyVertex<T>>();
-		 
-			for (int i = 0; i < numVertex; i++) {
-	            distance[i] = Integer.MAX_VALUE;
-		 }
-			pq.add(from);
-			distance[from.getIndex()] = 0;
-			while (visited.size() != numVertex) { 
-				            int u = pq.remove().getIndex();
-				            
-				            visited.add(u); 
-				            graph_adjacentNodes(u,distance,visited); 
-				        }
-		return distance[destiny.getIndex()];
-	}
-    
-   
-	public int kruskal() {
-    	
-		for(int i=0;i<fathers.length;i++) {
-			fathers[i] = i;
-		}
-		int totalWeight = 0;
-		int edgesGraph = 0;
-		int count = 0;
-		Collections.sort(edges);
-		int origin,destination,weight;
-		while(edgesGraph < numVertex-1 && count<numEdges) {
-			origin = edges.get(count).getInitial().getIndex();
-			destination = edges.get(count).getDestination().getIndex();
-			weight = (int)edges.get(count).getWeight();
-			if(find(origin) != find(destination)) {
-				unite(origin,destination);
-				totalWeight +=weight;
-				edgesGraph++;
-			}
-			count++;}
-		
-			return totalWeight;
-	}
-    
-    
-    
-    
-    
-    
-    
-    
-
+	
     public void addVertice(K key){
         Vertice<K> v = new Vertice<>(key);
         vertices.add(v);
@@ -282,6 +227,32 @@ public class Graph<K>{
         }
         return v;
     }
+    
+    
+    /*
+	 * This method finds the neighboring nodes connected to a given vertex.
+	 * This is a very important method to traverse a Graph used in BFS and DFS algorithms.
+	 * 
+	 */
+	public List<Vertice> getAdjacentVertex(Vertice v) {
+		List<Vertice> list = new LinkedList<Vertice>();
+		if((v != null) && (edges != null)) {
+			Iterator<Edge> iterator = edges.iterator();
+			while(iterator.hasNext()) {
+				Edge temp = iterator.next(); 
+				if(temp.getSource().equals(v)) {
+					list.add(temp.getEnd());
+				}
+			}
+			
+		} 
+		
+		return list;		
+	}
+    
+    
+    
+   
 
 
     public void edit(K key ,K newValue){

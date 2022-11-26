@@ -46,11 +46,4 @@ public class RouteDto {
         this.bestRoute = bestRoute;
     }
 
-
-
-
-
-
-
-
 }

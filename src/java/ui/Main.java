@@ -5,7 +5,10 @@ import java.model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
 
@@ -14,7 +17,7 @@ public class Main {
     private int numOfStations;
     private Scanner sc;
     private File file;
-    private static String FILE_ROUTE = "src/main/resources/static/data/graph.csv";
+    private static String FILE_ROUTE = "src/java/data/graph.csv";
 
     public Main() throws FileNotFoundException {
         this.file = new File(FILE_ROUTE);
@@ -39,8 +42,28 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Main main = new Main();
-        //main.importData();
-
-
+        
     }
+    
+    public static void DFS(Graph graph, Vertice v) {
+		
+		if((graph != null) && (v != null)) {
+			Stack<Vertice> stack = new Stack<Vertice>();
+			List<Vertice> list = new ArrayList<Vertice>();
+			stack.push(v);
+			list.add(v);
+			while(!stack.empty()) {
+				Vertice temp = stack.pop();
+				System.out.print(temp + " "); //Printing the root
+				for(Vertice i : graph.getAdjacentVertex(temp)) {
+					if(!list.contains(i)) {
+						list.add(i);
+						stack.push(i);						
+					}
+				}
+			}
+			
+		}
+		
+	}
 }

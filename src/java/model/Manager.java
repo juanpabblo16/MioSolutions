@@ -11,7 +11,7 @@ public class Manager{
     private int numOfStations;
     private Scanner sc;
     private File file;
-    private static String FILE_ROUTE = "src/main/resources/static/data/graph2.csv";
+    private static String FILE_ROUTE = "src/java/data/graph2.csv";
 
     public Manager(){
         this.graph = new Graph<>(false);
@@ -19,7 +19,7 @@ public class Manager{
         try {
             this.sc = new Scanner(file);
         } catch (FileNotFoundException e) {
-            System.out.println("Error creating graph");
+            System.out.println("error creando grafo");
         }
         while(sc.hasNextLine()){
             String data = sc.nextLine();

@@ -1,7 +1,9 @@
 package test.java.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.model.Manager;
 
 class ManagerTest {
     private Manager manager;
